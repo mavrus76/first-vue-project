@@ -2,8 +2,11 @@
   <ul class="catalog__pagination pagination">
     <li class="pagination__item">
       <a
-        class="pagination__link pagination__link--arrow pagination__link--disabled"
+        class="pagination__link pagination__link--arrow"
+        :class="{ 'pagination__link--disabled': page === 1 }"
         aria-label="Предыдущая страница"
+        href="#"
+        @click.prevent="page > 1 ? paginate(page - 1) : false"
       >
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-left"></use>
@@ -21,7 +24,13 @@
       </a>
     </li>
     <li class="pagination__item">
-      <a class="pagination__link pagination__link--arrow" href="#" aria-label="Следующая страница">
+      <a
+        class="pagination__link pagination__link--arrow"
+        :class="{ 'pagination__link--disabled': page === pages }"
+        aria-label="Следующая страница"
+        href="#"
+        @click.prevent="page < pages ? paginate(page + 1) : false"
+      >
         <svg width="8" height="14" fill="currentColor">
           <use xlink:href="#icon-arrow-right"></use>
         </svg>
