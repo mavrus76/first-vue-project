@@ -1,34 +1,26 @@
 export default [
   {
-    id: 1,
-    code: '#73B6EA',
+    id: '#73B6EA',
   },
   {
-    id: 2,
-    code: '#FFBE15',
+    id: '#FFBE15',
   },
   {
-    id: 3,
-    code: '#939393',
+    id: '#939393',
   },
   {
-    id: 4,
-    code: '#8BE000',
+    id: '#8BE000',
   },
   {
-    id: 5,
-    code: '#FF6B00',
+    id: '#FF6B00',
   },
   {
-    id: 6,
-    code: '#FFF',
+    id: '#FFF',
   },
   {
-    id: 7,
-    code: '#000',
+    id: '#000',
   },
   {
-    id: 8,
-    code: '#F00',
+    id: '#F00',
   },
 ];

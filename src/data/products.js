@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     categoryId: 9,
-    colorsId: [1, 5, 7],
+    colorsId: ['#73B6EA', '#FF6B00', '#000'],
     title: 'Смартфон Poco M4 Pro',
     price: 20346,
     image: '/img/phone.webp',
@@ -10,7 +10,7 @@ export default [
   {
     id: 2,
     categoryId: 9,
-    colorsId: [3, 4, 7],
+    colorsId: ['#939393', '#8BE000', '#000'],
     title: 'Фитнес-браслет Mi Smart Band 5',
     price: 2238,
     image: '/img/fitness.webp',
@@ -18,7 +18,7 @@ export default [
   {
     id: 3,
     categoryId: 1,
-    colorsId: [7],
+    colorsId: ['#000'],
     title: 'Шины Yokohama Geolandar',
     price: 12992,
     image: '/img/tire.webp',
@@ -26,7 +26,7 @@ export default [
   {
     id: 4,
     categoryId: 1,
-    colorsId: [5, 7],
+    colorsId: ['#FF6B00', '#000'],
     title: 'Домкрат автомобильный Matrix',
     price: 2050,
     image: '/img/jack.webp',
@@ -34,7 +34,7 @@ export default [
   {
     id: 5,
     categoryId: 2,
-    colorsId: [3, 6],
+    colorsId: ['#939393', '#FFF'],
     title: 'Термокружка Good Sale',
     price: 516,
     image: '/img/mug.webp',
@@ -42,7 +42,7 @@ export default [
   {
     id: 6,
     categoryId: 3,
-    colorsId: [1, 2, 4],
+    colorsId: ['#73B6EA', '#FFBE15', '#8BE000'],
     title: 'Шуруповерт Electrolite Expert',
     price: 3056,
     image: '/img/screwdriver.webp',
@@ -66,7 +66,7 @@ export default [
   {
     id: 9,
     categoryId: 8,
-    colorsId: [2, 3, 5],
+    colorsId: ['#FFBE15', '#939393', '#FF6B00'],
     title: 'Горный велосипед Green Bike',
     price: 24199,
     image: '/img/bike.webp',
@@ -74,7 +74,7 @@ export default [
   {
     id: 10,
     categoryId: 9,
-    colorsId: [3, 7],
+    colorsId: ['#939393', '#000'],
     title: 'Ноутбук Lenovo V15 G2 ALC',
     price: 38390,
     image: '/img/notebook.webp',
@@ -82,7 +82,7 @@ export default [
   {
     id: 11,
     categoryId: 2,
-    colorsId: [1, 5, 8],
+    colorsId: ['#73B6EA', '#FF6B00', '#F00'],
     title: 'Бытовой пылесос Philips',
     price: 15680,
     image: '/img/vacuum-cleaner.webp',
@@ -90,7 +90,7 @@ export default [
   {
     id: 12,
     categoryId: 2,
-    colorsId: [1, 5, 8],
+    colorsId: ['#73B6EA', '#FF6B00', '#F00'],
     title: 'Электрический чайник Bosch',
     price: 5562,
     image: '/img/teapot.webp',
@@ -98,7 +98,7 @@ export default [
   {
     id: 13,
     categoryId: 6,
-    colorsId: [1, 4, 7, 8],
+    colorsId: ['#73B6EA', '#8BE000', '#000', '#F00'],
     title: 'Компьютерное кресло',
     price: 8090,
     image: '/img/armchair.webp',
@@ -106,7 +106,7 @@ export default [
   {
     id: 14,
     categoryId: 4,
-    colorsId: [1, 7, 8],
+    colorsId: ['#73B6EA', '#000', '#F00'],
     title: 'Ручка гелевая черная Brauberg',
     price: 281,
     image: '/img/pen.webp',
@@ -114,7 +114,7 @@ export default [
   {
     id: 15,
     categoryId: 7,
-    colorsId: [8],
+    colorsId: ['#F00'],
     title: 'Кофе молотый BUSHIDO Red Katana',
     price: 370,
     image: '/img/coffee.webp',

@@ -47,9 +47,9 @@
                 type="radio"
                 name="color"
                 :value="color.id"
-                v-model.number="currentColorId"
+                v-model="currentColorId"
               />
-              <span class="colors__value" :style="{ 'background-color': color.code }"></span>
+              <span class="colors__value" :style="{ 'background-color': color.id }"></span>
             </label>
           </li>
         </ul>
