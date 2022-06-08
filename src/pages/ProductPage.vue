@@ -122,7 +122,7 @@
             <fieldset class="form__block">
               <legend class="form__legend">Объемб в ГБ:</legend>
 
-              <ul class="sizes sizes--primery">
+              <ul class="sizes sizes--primary">
                 <li class="sizes__item">
                   <label class="sizes__label">
                     <input class="sizes__radio sr-only" type="radio" name="sizes-item" value="32" />
@@ -167,7 +167,7 @@
                 </button>
               </div>
 
-              <button class="button button--primery" type="submit">В корзину</button>
+              <button class="button button--primary" type="submit">В корзину</button>
             </div>
           </form>
         </div>
