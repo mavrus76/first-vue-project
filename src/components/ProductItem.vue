@@ -9,7 +9,7 @@
       <a href="#">{{ product.title }}</a>
     </h3>
 
-    <span class="catalog__price"> {{ product.price }} ₽ </span>
+    <span class="catalog__price"> {{ product.price | numberFormat }} ₽ </span>
 
     <ul class="colors colors--black">
       <li class="colors__item" v-for="colorId in product.colorsId" :key="colorId">
@@ -23,14 +23,16 @@
 </template>
 
 <script>
-import eventBus from '@/eventBus';
+import gotoPage from '@/helpers/gotoPage';
+import numberFormat from '@/helpers/numberFormat';
 
 export default {
   props: ['product'],
+  filters: {
+    numberFormat,
+  },
   methods: {
-    gotoPage(pageName, pageParams) {
-      eventBus.$emit('gotoPage', pageName, pageParams);
-    },
+    gotoPage,
   },
 };
 </script>
