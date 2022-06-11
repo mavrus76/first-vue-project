@@ -29,7 +29,7 @@
       </div>
 
       <div class="item__info">
-        <span class="item__code"> {{ product.id }} </span>
+        <span class="item__code">Артикул: {{ product.id }} </span>
         <h2 class="item__title"> {{ product.title }} </h2>
         <div class="item__form">
           <form class="form" action="#" method="POST">
