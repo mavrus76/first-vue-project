@@ -26,45 +26,7 @@
       <form class="cart__form form" action="#" method="POST">
         <div class="cart__field">
           <ul class="cart__list">
-            <li class="cart__item product" v-for="item in products"
-            :key="item.productId">
-              <div class="product__pic">
-                <img width="120" height="120" :src="item.product.image" :alt="item.product.title" />
-              </div>
-              <h3 class="product__title">
-                {{ item.product.title }}
-              </h3>
-              <span class="product__code">
-                Артикул: {{ item.product.id }}
-              </span>
-
-              <div class="product__counter form__counter">
-                <button type="button" aria-label="Убрать один товар">
-                  <svg width="10" height="10" fill="currentColor">
-                    <use xlink:href="#icon-minus"></use>
-                  </svg>
-                </button>
-                <label>
-                  <input type="text" :value="item.amount" name="count">
-                </label>
-                <button type="button" aria-label="Добавить один товар">
-                  <svg width="10" height="10" fill="currentColor">
-                    <use xlink:href="#icon-plus"></use>
-                  </svg>
-                </button>
-              </div>
-
-              <b class="product__price">
-                {{ (item.product.price * item.amount) | numberFormat }} ₽
-              </b>
-
-              <button class="product__del button-del"
-              type="button" aria-label="Удалить товар из корзины">
-                <svg width="20" height="20" fill="currentColor">
-                  <use xlink:href="#icon-close"></use>
-                </svg>
-              </button>
-            </li>
+            <CartItem v-for="item in products" :key="item.productId" :item="item" />
           </ul>
         </div>
 
@@ -89,13 +51,19 @@
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
 import { mapGetters } from 'vuex';
+import CartItem from '@/components/CartItem.vue';
 
 export default {
   filters: {
     numberFormat,
   },
+  components: { CartItem },
   computed: {
-    ...mapGetters({ products: 'cartDetailProducts', totalPrice: 'cartTotalPrice', totalProducts: 'cartTotalProducts' }),
+    ...mapGetters({
+      products: 'cartDetailProducts',
+      totalPrice: 'cartTotalPrice',
+      totalProducts: 'cartTotalProducts',
+    }),
   },
   methods: {
     gotoPage,
