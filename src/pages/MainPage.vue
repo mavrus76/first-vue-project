@@ -41,16 +41,6 @@ export default {
     };
   },
   computed: {
-    // filteredProducts() {
-    //   let filteredProducts = this.productsData.items;
-
-    //   if (this.filterColorId) {
-    //     filteredProducts = filteredProducts.filter((product) => product.colors
-    //       .find((productColorId) => productColorId === this.filterColorId));
-    //   }
-
-    //   return filteredProducts;
-    // },
     products() {
       return this.productsData
         ? this.productsData.items.map((product) => ({

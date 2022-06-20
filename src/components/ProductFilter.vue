@@ -46,7 +46,7 @@
                 class="colors__radio sr-only"
                 type="radio"
                 name="color"
-                :value="color.code"
+                :value="color.id"
                 v-model="currentColorId"
               />
               <span class="colors__value" :style="{ 'background-color': color.code }"></span>
