@@ -24,7 +24,7 @@
           <img
             width="570"
             height="570"
-            :src="product.image.file.url"
+            :src="product.image"
             :alt="product.title"
           />
         </div>
@@ -209,7 +209,10 @@ export default {
   },
   computed: {
     product() {
-      return this.productData;
+      return {
+        ...this.productData,
+        image: this.productData.image.file.url,
+      };
     },
     category() {
       return this.productData.category;
