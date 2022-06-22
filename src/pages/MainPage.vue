@@ -13,8 +13,8 @@
         :color-id.sync="filterColorId"
       />
       <section class="catalog">
-        <div v-if="productsLoading">Загрузка товаров...</div>
-        <div v-if="productsLoadingFailed">
+        <div class="message" v-if="productsLoading">Загрузка товаров...</div>
+        <div class="message" v-if="productsLoadingFailed">
           Произошла ошибка при загрузке товаров
           <button @click.prevent="loadProducts">Попробовать ещё раз</button>
         </div>

@@ -1191,3 +1191,9 @@ a {
   grid-column: 2/3;
   grid-row: 3/4;
 }
+
+.message {
+  margin: 5px;
+  color: #8a2be2;
+  font-size: 24px;
+}
