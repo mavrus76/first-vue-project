@@ -142,11 +142,9 @@
 </template>
 
 <script>
-import gotoPage from '@/helpers/gotoPage';
-import numberFormat from '@/helpers/numberFormat';
-import { mapGetters } from 'vuex';
 import BaseFormText from '@/components/BaseFormText.vue';
 import BaseFormTextarea from '@/components/BaseFormTextarea.vue';
+import orderProductMixin from '@/mixins/orderProductMixin';
 
 export default {
   components: { BaseFormText, BaseFormTextarea },
@@ -156,18 +154,6 @@ export default {
       formError: {},
     };
   },
-  filters: {
-    numberFormat,
-  },
-  computed: {
-    ...mapGetters({
-      products: 'cartDetailProducts',
-      totalPrice: 'cartTotalPrice',
-      totalProducts: 'cartTotalProducts',
-    }),
-  },
-  methods: {
-    gotoPage,
-  },
+  mixins: [orderProductMixin],
 };
 </script>

@@ -50,25 +50,11 @@
 </template>
 
 <script>
-import gotoPage from '@/helpers/gotoPage';
-import numberFormat from '@/helpers/numberFormat';
-import { mapGetters } from 'vuex';
 import CartItem from '@/components/CartItem.vue';
+import orderProductMixin from '@/mixins/orderProductMixin';
 
 export default {
   components: { CartItem },
-  filters: {
-    numberFormat,
-  },
-  computed: {
-    ...mapGetters({
-      products: 'cartDetailProducts',
-      totalPrice: 'cartTotalPrice',
-      totalProducts: 'cartTotalProducts',
-    }),
-  },
-  methods: {
-    gotoPage,
-  },
+  mixins: [orderProductMixin],
 };
 </script>
