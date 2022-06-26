@@ -38,10 +38,17 @@
             Итого: <span>{{ totalPrice | numberFormat }} ₽</span>
           </p>
 
-          <router-link tag="button" class="cart__button button button--primary"
+          <!-- <router-link class="cart__button button button--primary"
+          tag="button"
           type="submit"
           :to="{name: 'order'}">
             Оформить заказ
+          </router-link> -->
+
+          <router-link :to="{name: 'order'}">
+            <button class='cart__button button button--primary' type="submit">
+              Оформить заказ
+            </button>
           </router-link>
         </div>
       </form>
@@ -51,10 +58,10 @@
 
 <script>
 import CartItem from '@/components/CartItem.vue';
-import orderProductMixin from '@/mixins/orderProductMixin';
+import pagesCartAndOrderMixin from '@/mixins/pagesCartAndOrderMixin';
 
 export default {
   components: { CartItem },
-  mixins: [orderProductMixin],
+  mixins: [pagesCartAndOrderMixin],
 };
 </script>
