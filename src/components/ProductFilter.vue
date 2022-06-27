@@ -130,8 +130,8 @@
 </template>
 
 <script>
-import axios from 'axios';
-import { API_BASE_URL } from '@/config';
+import loadCategories from '@/api/loadCategories';
+import loadColors from '@/api/loadColors';
 
 export default {
   data() {
@@ -180,14 +180,8 @@ export default {
       this.$emit('update:categoryId', 0);
       this.$emit('update:colorId', 0);
     },
-    loadCategories() {
-      axios.get(`${API_BASE_URL}/api/productCategories`)
-        .then((response) => { this.categoriesData = response.data; });
-    },
-    loadColors() {
-      axios.get(`${API_BASE_URL}/api/colors`)
-        .then((response) => { this.colorsData = response.data; });
-    },
+    loadCategories,
+    loadColors,
   },
   created() {
     this.loadCategories();

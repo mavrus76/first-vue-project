@@ -38,13 +38,6 @@
             Итого: <span>{{ totalPrice | numberFormat }} ₽</span>
           </p>
 
-          <!-- <router-link class="cart__button button button--primary"
-          tag="button"
-          type="submit"
-          :to="{name: 'order'}">
-            Оформить заказ
-          </router-link> -->
-
           <router-link :to="{name: 'order'}">
             <button class='cart__button button button--primary' type="submit">
               Оформить заказ

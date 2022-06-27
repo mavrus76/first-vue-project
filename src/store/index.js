@@ -4,6 +4,7 @@ import loadCart from '@/api/loadCart';
 import addProductToCart from '@/api/addProductToCart';
 import updateCartProductAmount from '@/api/updateCartProductAmount';
 import deleteProductFromCart from '@/api/deleteProductFromCart';
+import loadOrderInfo from '@/api/loadOrderInfo';
 
 Vue.use(Vuex);
 
@@ -12,8 +13,12 @@ export default new Vuex.Store({
     cartProducts: [],
     userAccessKey: null,
     cartProductsData: [],
+    orderInfo: null,
   },
   mutations: {
+    updateOrderInfo(state, orderInfo) {
+      state.orderInfo = orderInfo;
+    },
     resetCart(state) {
       state.cartProducts = [];
       state.cartProductsData = [];
@@ -61,6 +66,7 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    loadOrderInfo,
     loadCart,
     addProductToCart,
     updateCartProductAmount,
