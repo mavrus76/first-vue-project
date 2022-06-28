@@ -2,6 +2,7 @@ import axios from 'axios';
 import { API_BASE_URL } from '@/config';
 
 export default function order() {
+  this.orderLoading = true;
   this.formError = {};
   this.formErrorMessage = '';
 
@@ -21,5 +22,6 @@ export default function order() {
     .catch((error) => {
       this.formError = error.response.data.error.request || {};
       this.formErrorMessage = error.response.data.error.message;
-    });
+    })
+    .then(() => { this.orderLoading = false; });
 }

@@ -103,6 +103,7 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
+import loadOrderInfo from '@/api/loadOrderInfo';
 
 export default {
   data() {
@@ -124,6 +125,7 @@ export default {
   },
   methods: {
     gotoPage,
+    loadOrderInfo,
   },
   created() {
     if (this.$store.state.orderInfo && this.$store.state.orderInfo.id === this.$route.params.id) {
