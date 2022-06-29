@@ -39,7 +39,8 @@
           </p>
 
           <router-link :to="{name: 'order'}">
-            <button class='cart__button button button--primary' type="submit">
+            <button class='cart__button button button--primary' type="submit"
+              v-show="products.length > 0">
               Оформить заказ
             </button>
           </router-link>
@@ -51,10 +52,24 @@
 
 <script>
 import CartItem from '@/components/CartItem.vue';
-import pagesCartAndOrderMixin from '@/mixins/pagesCartAndOrderMixin';
+import gotoPage from '@/helpers/gotoPage';
+import numberFormat from '@/helpers/numberFormat';
+import { mapGetters } from 'vuex';
 
 export default {
   components: { CartItem },
-  mixins: [pagesCartAndOrderMixin],
+  filters: {
+    numberFormat,
+  },
+  computed: {
+    ...mapGetters({
+      products: 'cartDetailProducts',
+      totalPrice: 'cartTotalPrice',
+      totalProducts: 'cartTotalProducts',
+    }),
+  },
+  methods: {
+    gotoPage,
+  },
 };
 </script>

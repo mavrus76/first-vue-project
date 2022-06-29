@@ -103,29 +103,29 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-import loadOrderInfo from '@/api/loadOrderInfo';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
     return {
-      id: this.$store.state.orderInfo.id,
-      name: this.$store.state.orderInfo.name,
-      address: this.$store.state.orderInfo.address,
-      phone: this.$store.state.orderInfo.phone,
-      email: this.$store.state.orderInfo.email,
-      comment: this.$store.state.orderInfo.comment,
-      products: this.$store.state.orderInfo.basket.items,
-      totalPrice: this.$store.state.orderInfo.totalPrice,
-      totalProducts: this.$store.state.orderInfo.basket.items.length,
-      status: this.$store.state.orderInfo.status,
+      id: null,
+      name: '',
+      address: '',
+      phone: '',
+      email: '',
+      comment: '',
+      products: [],
+      totalPrice: null,
+      totalProducts: null,
+      status: {},
     };
   },
   filters: {
     numberFormat,
   },
   methods: {
+    ...mapActions('loadOrderInfo'),
     gotoPage,
-    loadOrderInfo,
   },
   created() {
     if (this.$store.state.orderInfo && this.$store.state.orderInfo.id === this.$route.params.id) {

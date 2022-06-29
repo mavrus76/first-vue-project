@@ -109,8 +109,22 @@
         </div>
 
         <div class="cart__block">
-          <CartOrders />
-          <CartTotal />
+          <ul class="cart__orders">
+            <li class="cart__order" v-for="item in products" :key="item.product.id">
+              <h3>{{ item.product.title }}</h3>
+              <b>{{ item.product.price | numberFormat }} ₽</b>
+              <span>Артикул: {{ item.product.id }}</span>
+            </li>
+          </ul>
+
+          <div class="cart__total">
+            <p>Доставка: <b>500 ₽</b></p>
+            <p>Итого:
+              <b>{{totalProducts | numberFormat}}</b>
+            товара на сумму
+              <b>{{totalPrice | numberFormat}} ₽</b>
+            </p>
+          </div>
           <button class="cart__button button button--primary" type="submit">
             Оформить заказ
           </button>
@@ -131,16 +145,16 @@
 </template>
 
 <script>
+import gotoPage from '@/helpers/gotoPage';
+import numberFormat from '@/helpers/numberFormat';
+import { mapGetters } from 'vuex';
 import BaseFormText from '@/components/BaseFormText.vue';
 import BaseFormTextarea from '@/components/BaseFormTextarea.vue';
-import pagesCartAndOrderMixin from '@/mixins/pagesCartAndOrderMixin';
 import order from '@/api/order';
-import CartOrders from '@/components/CartOrders.vue';
-import CartTotal from '@/components/CartTotal.vue';
 
 export default {
   components: {
-    BaseFormText, BaseFormTextarea, CartOrders, CartTotal,
+    BaseFormText, BaseFormTextarea,
   },
   data() {
     return {
@@ -150,9 +164,19 @@ export default {
       orderLoading: false,
     };
   },
+  filters: {
+    numberFormat,
+  },
+  computed: {
+    ...mapGetters({
+      products: 'cartDetailProducts',
+      totalPrice: 'cartTotalPrice',
+      totalProducts: 'cartTotalProducts',
+    }),
+  },
   methods: {
+    gotoPage,
     order,
   },
-  mixins: [pagesCartAndOrderMixin],
 };
 </script>
