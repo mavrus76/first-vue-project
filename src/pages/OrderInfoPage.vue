@@ -1,5 +1,5 @@
 <template>
-  <main class="content container">
+  <main class="content container" v-if="loadInfo()">
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -103,7 +103,8 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-import { mapActions } from 'vuex';
+import axios from 'axios';
+import { API_BASE_URL } from '@/config';
 
 export default {
   data() {
@@ -124,8 +125,29 @@ export default {
     numberFormat,
   },
   methods: {
-    ...mapActions('loadOrderInfo'),
     gotoPage,
+    getInfo() {
+      this.id = this.$store.state.orderInfo.id;
+      this.name = this.$store.state.orderInfo.name;
+      this.address = this.$store.state.orderInfo.address;
+      this.phone = this.$store.state.orderInfo.phone;
+      this.email = this.$store.state.orderInfo.email;
+      this.comment = this.$store.state.orderInfo.comment;
+      this.products = this.$store.state.orderInfo.basket.items;
+      this.totalPrice = this.$store.state.orderInfo.totalPrice;
+      this.totalProducts = this.$store.state.orderInfo.basket.items.length;
+      this.status = this.$store.state.orderInfo.status;
+    },
+    loadInfo() {
+      const orderId = this.$store.state.orderInfo.id;
+      return axios
+        .get(`${API_BASE_URL}/api/orders/${orderId}`, {
+          params: {
+            userAccessKey: this.$store.state.userAccessKey,
+          },
+        })
+        .then(() => { this.getInfo(); });
+    },
   },
   created() {
     if (this.$store.state.orderInfo && this.$store.state.orderInfo.id === this.$route.params.id) {
