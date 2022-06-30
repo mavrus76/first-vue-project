@@ -1,5 +1,5 @@
 <template>
-  <main class="content container" v-if="loadInfo()">
+  <main class="content container" v-if="reloadOrderInfo()">
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -20,7 +20,7 @@
       </ul>
 
       <h1 class="content__title">
-        Заказ оформлен <span>№ {{ id }}</span>
+        Заказ оформлен <span>№ {{ orderInfo.id }}</span>
       </h1>
     </div>
 
@@ -39,7 +39,7 @@
                 Получатель
               </span>
               <span class="dictionary__value">
-                {{ name }}
+                {{ orderInfo.name }}
               </span>
             </li>
             <li class="dictionary__item">
@@ -47,7 +47,7 @@
                 Адрес доставки
               </span>
               <span class="dictionary__value">
-                {{ address }}
+                {{ orderInfo.address }}
               </span>
             </li>
             <li class="dictionary__item">
@@ -55,7 +55,7 @@
                 Телефон
               </span>
               <span class="dictionary__value">
-                {{ phone }}
+                {{ orderInfo.phone }}
               </span>
             </li>
             <li class="dictionary__item">
@@ -63,7 +63,7 @@
                 Email
               </span>
               <span class="dictionary__value">
-                {{ email }}
+                {{ orderInfo.email }}
               </span>
             </li>
             <li class="dictionary__item">
@@ -79,7 +79,7 @@
 
         <div class="cart__block">
           <ul class="cart__orders">
-            <li class="cart__order" v-for="item in products" :key="item.product.id">
+            <li class="cart__order" v-for="item in orderInfo.basket.items" :key="item.product.id">
               <h3>{{ item.product.title }}</h3>
               <b>{{ item.product.price | numberFormat }} ₽</b>
               <span>Артикул: {{ item.product.id }}</span>
@@ -89,9 +89,9 @@
           <div class="cart__total">
             <p>Доставка: <b>500 ₽</b></p>
             <p>Итого:
-              <b>{{totalProducts | numberFormat}}</b>
+              <b>{{orderInfo.basket.items.length | numberFormat}}</b>
             товара на сумму
-              <b>{{totalPrice | numberFormat}} ₽</b>
+              <b>{{orderInfo.totalPrice | numberFormat}} ₽</b>
             </p>
           </div>
         </div>
@@ -103,22 +103,12 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-import axios from 'axios';
-import { API_BASE_URL } from '@/config';
+import reloadOrderInfo from '@/api/reloadOrderInfo';
 
 export default {
   data() {
     return {
-      id: null,
-      name: '',
-      address: '',
-      phone: '',
-      email: '',
-      comment: '',
-      products: [],
-      totalPrice: null,
-      totalProducts: null,
-      status: {},
+      orderInfo: null,
     };
   },
   filters: {
@@ -127,27 +117,9 @@ export default {
   methods: {
     gotoPage,
     getInfo() {
-      this.id = this.$store.state.orderInfo.id;
-      this.name = this.$store.state.orderInfo.name;
-      this.address = this.$store.state.orderInfo.address;
-      this.phone = this.$store.state.orderInfo.phone;
-      this.email = this.$store.state.orderInfo.email;
-      this.comment = this.$store.state.orderInfo.comment;
-      this.products = this.$store.state.orderInfo.basket.items;
-      this.totalPrice = this.$store.state.orderInfo.totalPrice;
-      this.totalProducts = this.$store.state.orderInfo.basket.items.length;
-      this.status = this.$store.state.orderInfo.status;
+      this.orderInfo = this.$store.state.orderInfo;
     },
-    loadInfo() {
-      const orderId = this.$store.state.orderInfo.id;
-      return axios
-        .get(`${API_BASE_URL}/api/orders/${orderId}`, {
-          params: {
-            userAccessKey: this.$store.state.userAccessKey,
-          },
-        })
-        .then(() => { this.getInfo(); });
-    },
+    reloadOrderInfo,
   },
   created() {
     if (this.$store.state.orderInfo && this.$store.state.orderInfo.id === this.$route.params.id) {
