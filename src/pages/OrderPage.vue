@@ -3,63 +3,62 @@
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
-          <router-link class="breadcrumbs__link" :to="{name: 'main'}">
-            Каталог
-          </router-link>
+          <router-link class="breadcrumbs__link" :to="{ name: 'main' }"> Каталог </router-link>
         </li>
         <li class="breadcrumbs__item">
-          <router-link class="breadcrumbs__link" :to="{name: 'cart'}">
-            Корзина
-          </router-link>
+          <router-link class="breadcrumbs__link" :to="{ name: 'cart' }"> Корзина </router-link>
         </li>
         <li class="breadcrumbs__item">
-          <a class="breadcrumbs__link">
-            Оформление заказа
-          </a>
+          <a class="breadcrumbs__link"> Оформление заказа </a>
         </li>
       </ul>
 
-      <h1 class="content__title">
-        Корзина
-      </h1>
-      <span class="content__info">
-        {{ totalProducts }} товара
-      </span>
+      <h1 class="content__title">Корзина</h1>
+      <span class="content__info"> {{ totalProducts }} товара </span>
     </div>
 
     <section class="cart">
       <form class="cart__form form" action="#" method="POST" @submit.prevent="order">
         <div class="cart__field">
           <div class="cart__data">
-            <BaseFormText v-model="formData.name"
-            title="ФИО"
-            type="text"
-            :error="formError.name"
-            placeholder="Введите ваше полное имя" />
+            <BaseFormText
+              v-model="formData.name"
+              title="ФИО"
+              type="text"
+              :error="formError.name"
+              placeholder="Введите ваше полное имя"
+            />
 
-            <BaseFormText v-model="formData.address"
-            title="Адрес доставки"
-            type="text"
-            :error="formError.address"
-            placeholder="Введите ваш адрес" />
+            <BaseFormText
+              v-model="formData.address"
+              title="Адрес доставки"
+              type="text"
+              :error="formError.address"
+              placeholder="Введите ваш адрес"
+            />
 
-            <BaseFormText v-model="formData.phone"
-            title="Телефон"
-            type="tel"
-            :error="formError.phone"
-            placeholder="Введите ваш телефон" />
+            <BaseFormText
+              v-model="formData.phone"
+              title="Телефон"
+              type="tel"
+              :error="formError.phone"
+              placeholder="Введите ваш телефон"
+            />
 
-            <BaseFormText v-model="formData.email"
-            title="Email"
-            type="email"
-            :error="formError.email"
-            placeholder="Введите ваш Email" />
+            <BaseFormText
+              v-model="formData.email"
+              title="Email"
+              type="email"
+              :error="formError.email"
+              placeholder="Введите ваш Email"
+            />
 
             <BaseFormTextarea
-            v-model="formData.comment"
-            title="Комментарий к заказу"
-            :error="formError.comment"
-            placeholder="Ваши пожелания" />
+              v-model="formData.comment"
+              title="Комментарий к заказу"
+              :error="formError.comment"
+              placeholder="Ваши пожелания"
+            />
           </div>
 
           <div class="cart__options">
@@ -67,21 +66,20 @@
             <ul class="cart__options options">
               <li class="options__item">
                 <label class="options__label">
-                  <input class="options__radio sr-only"
-                  type="radio" name="delivery"
-                  value="0"
-                  checked="">
-                  <span class="options__value">
-                    Самовывоз <b>бесплатно</b>
-                  </span>
+                  <input
+                    class="options__radio sr-only"
+                    type="radio"
+                    name="delivery"
+                    value="0"
+                    checked=""
+                  />
+                  <span class="options__value"> Самовывоз <b>бесплатно</b> </span>
                 </label>
               </li>
               <li class="options__item">
                 <label class="options__label">
-                  <input class="options__radio sr-only" type="radio" name="delivery" value="500">
-                  <span class="options__value">
-                    Курьером <b>500 ₽</b>
-                  </span>
+                  <input class="options__radio sr-only" type="radio" name="delivery" value="500" />
+                  <span class="options__value"> Курьером <b>500 ₽</b> </span>
                 </label>
               </li>
             </ul>
@@ -90,18 +88,14 @@
             <ul class="cart__options options">
               <li class="options__item">
                 <label class="options__label">
-                  <input class="options__radio sr-only" type="radio" name="pay" value="card">
-                  <span class="options__value">
-                    Картой при получении
-                  </span>
+                  <input class="options__radio sr-only" type="radio" name="pay" value="card" />
+                  <span class="options__value"> Картой при получении </span>
                 </label>
               </li>
               <li class="options__item">
                 <label class="options__label">
-                  <input class="options__radio sr-only" type="radio" name="pay" value="cash">
-                  <span class="options__value">
-                    Наличными при получении
-                  </span>
+                  <input class="options__radio sr-only" type="radio" name="pay" value="cash" />
+                  <span class="options__value"> Наличными при получении </span>
                 </label>
               </li>
             </ul>
@@ -119,19 +113,28 @@
 
           <div class="cart__total">
             <p>Доставка: <b>500 ₽</b></p>
-            <p>Итого:
-              <b>{{totalProducts | numberFormat}}</b>
-            товара на сумму
-              <b>{{totalPrice | numberFormat}} ₽</b>
+            <p>
+              Итого:
+              <b>{{ totalProducts | numberFormat }}</b>
+              товара на сумму
+              <b>{{ totalPrice | numberFormat }} ₽</b>
             </p>
           </div>
-          <button class="cart__button button button--primary" type="submit">
-            Оформить заказ
-          </button>
+          <button class="cart__button button button--primary" type="submit">Оформить заказ</button>
         </div>
         <div class="lds-spinner" v-if="orderLoading">
-          <div></div><div></div><div></div><div></div><div></div><div></div>
-          <div></div><div></div><div></div><div></div><div></div><div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
         </div>
         <div class="cart__error form__error-block" v-if="formErrorMessage">
           <h4>Заявка не отправлена!</h4>
@@ -154,7 +157,8 @@ import order from '@/api/order';
 
 export default {
   components: {
-    BaseFormText, BaseFormTextarea,
+    BaseFormText,
+    BaseFormTextarea,
   },
   data() {
     return {
