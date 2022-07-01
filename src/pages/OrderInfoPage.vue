@@ -1,5 +1,5 @@
 <template>
-  <main class="content container" v-if="reloadOrderInfo()">
+  <main class="content container" v-if="orderInfo">
     <div class="content__top">
       <ul class="breadcrumbs">
         <li class="breadcrumbs__item">
@@ -103,23 +103,18 @@
 <script>
 import gotoPage from '@/helpers/gotoPage';
 import numberFormat from '@/helpers/numberFormat';
-import reloadOrderInfo from '@/api/reloadOrderInfo';
 
 export default {
-  data() {
-    return {
-      orderInfo: null,
-    };
-  },
   filters: {
     numberFormat,
   },
   methods: {
     gotoPage,
-    getInfo() {
-      this.orderInfo = this.$store.state.orderInfo;
+  },
+  computed: {
+    orderInfo() {
+      return this.$store.state.orderInfo;
     },
-    reloadOrderInfo,
   },
   created() {
     if (this.$store.state.orderInfo && this.$store.state.orderInfo.id === this.$route.params.id) {
