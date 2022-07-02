@@ -2,5 +2,5 @@ const { defineConfig } = require('@vue/cli-service');
 
 module.exports = defineConfig({
   transpileDependencies: true,
-  publicPath: 'vue-shop-production',
+  publicPath: '/vue-shop-production/',
 });
