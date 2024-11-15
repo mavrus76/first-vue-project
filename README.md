@@ -1,4 +1,4 @@
-# Vue2 + js tehnozavr
+# Vue2 tehnozavr
 
 ## Project setup
 ```
